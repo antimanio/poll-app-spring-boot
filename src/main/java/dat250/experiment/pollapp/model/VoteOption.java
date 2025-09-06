@@ -1,8 +1,12 @@
 package dat250.experiment.pollapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class VoteOption {
     private String caption;
     private int presentationOrder;
+
+    @JsonBackReference
     private Poll poll;
 
     public VoteOption() {}

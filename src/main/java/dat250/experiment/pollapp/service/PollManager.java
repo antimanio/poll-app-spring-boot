@@ -54,6 +54,17 @@ public class PollManager {
     }
 
     public Vote castVote(User voter, VoteOption option) {
+        Optional<Vote> existingVote = votes.values().stream()
+                .filter(v -> v.getVoter().equals(voter))
+                .filter(v -> v.getVoteOption().getPoll().equals(option.getPoll()))
+                .findFirst();
+
+        if (existingVote.isPresent()) {
+            existingVote.get().setVoteOption(option);
+            existingVote.get().setPublishedAt(Instant.now());
+            return existingVote.get();
+        }
+
         Vote vote = new Vote(Instant.now(), option, voter);
         long id = voteIdCounter.getAndIncrement();
         votes.put(id, vote);

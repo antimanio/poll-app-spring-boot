@@ -1,10 +1,17 @@
 package dat250.experiment.pollapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import java.time.Instant;
 
 public class Vote {
     private Instant publishedAt;
+
+    @JsonIdentityReference(alwaysAsId = true)
     private VoteOption voteOption;
+
+    @JsonBackReference
     private User voter;
 
     public Vote() {}

@@ -26,4 +26,6 @@ DAT250: Software Technology Experiment Assignment 2
 
 - I knew for a fact that gradle worked, but the editor IntelliJ struggled to recognize gradle. 
 
-  
+  # Assignment
+- The assignment went fine:
+- For the test scenario, after User 1 created a new poll. I added 2 options, so User 2 can vote on the poll and changes his vote. ``testscenario.http``

@@ -1,0 +1,51 @@
+
+### Create User 1
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "anton",
+  "email": "anton@hvl.com"
+}
+
+### List all users
+GET http://localhost:8080/api/users
+
+### Create User 2
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "martin",
+  "email": "martin@hvl.com"
+}
+
+### List all users again
+GET http://localhost:8080/api/users
+
+### User 1 creates a new poll
+POST http://localhost:8080/api/polls?creatorId=1&question=Favorite%20color?&validUntilEpoch=1924992000
+
+### Add options to poll 1
+POST http://localhost:8080/api/polls/1/options?caption=Red&order=0
+
+### Add options to poll 1
+POST http://localhost:8080/api/polls/1/options?caption=Blue&order=1
+
+### List all polls
+GET http://localhost:8080/api/polls
+
+### User 2 votes on the poll
+POST http://localhost:8080/api/votes?userId=2&pollId=1&optionIndex=0
+
+### User 2 changes his vote
+POST http://localhost:8080/api/votes?userId=2&pollId=1&optionIndex=1
+
+### List votes
+GET http://localhost:8080/api/votes/results/1
+
+### Delete the poll
+DELETE http://localhost:8080/api/polls/1
+
+### List votes (should be empty)
+GET http://localhost:8080/api/votes/results/1

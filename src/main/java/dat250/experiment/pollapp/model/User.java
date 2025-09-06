@@ -1,13 +1,23 @@
 package dat250.experiment.pollapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+
     private String username;
+
+    @JsonIgnore
     private String email;
+
+    @JsonManagedReference
     private List<Poll> polls = new ArrayList<>();
+
+    @JsonManagedReference
     private List<Vote> votes = new ArrayList<>();
 
     public User() {}

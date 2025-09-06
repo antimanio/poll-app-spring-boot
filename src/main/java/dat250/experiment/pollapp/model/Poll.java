@@ -1,5 +1,8 @@
 package dat250.experiment.pollapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +11,11 @@ public class Poll {
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
+
+    @JsonBackReference
     private User creator;
+
+    @JsonManagedReference
     private List<VoteOption> voteOptions = new ArrayList<>();
 
     public Poll() {}
