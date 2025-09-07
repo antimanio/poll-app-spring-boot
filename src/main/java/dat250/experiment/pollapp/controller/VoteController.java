@@ -59,9 +59,7 @@ public class VoteController {
     public ResponseEntity<?> getResults(@PathVariable long pollId) {
         Optional<Poll> poll = pollManager.getPoll(pollId);
         if (poll.isEmpty()) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body(Map.of("error", "Poll not found"));
+            return ResponseEntity.ok(List.of()); // empty list
         }
 
         var results = poll.get().getVoteOptions().stream()

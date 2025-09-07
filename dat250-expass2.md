@@ -29,3 +29,5 @@ DAT250: Software Technology Experiment Assignment 2
   # Assignment
 - The assignment went fine:
 - For the test scenario, after User 1 created a new poll. I added 2 options, so User 2 can vote on the poll and changes his vote. ``testscenario.http``
+- Run PollappApplicationTests:
+- ``gradle test --tests "dat250.experiment.pollapp.PollappApplicationTests.testScenario"``
