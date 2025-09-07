@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Poll {
+    public long id;
     private String question;
     private Instant publishedAt;
     private Instant validUntil;
@@ -25,6 +26,14 @@ public class Poll {
         this.publishedAt = publishedAt;
         this.validUntil = validUntil;
         this.creator = creator;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getQuestion() { return question; }

@@ -19,6 +19,7 @@ public class PollManager {
     public User createUser(String username, String email) {
         User user = new User(username, email);
         long id = userIdCounter.getAndIncrement();
+        user.setId(id);
         users.put(id, user);
         return user;
     }
@@ -34,6 +35,7 @@ public class PollManager {
     public Poll createPoll(User creator, String question, Instant validUntil) {
         Poll poll = new Poll(question, Instant.now(), validUntil, creator);
         long id = pollIdCounter.getAndIncrement();
+        poll.setId(id);
         polls.put(id, poll);
         creator.getPolls().add(poll);
         return poll;
@@ -80,5 +82,22 @@ public class PollManager {
         return votes.values().stream()
                 .filter(v -> v.getVoteOption().equals(option))
                 .count();
+    }
+
+    public void deletePoll(long pollId) {
+        Poll poll = polls.remove(pollId);
+        if (poll == null) {
+            throw new IllegalArgumentException("Poll not found");
+        }
+
+        User creator = poll.getCreator();
+        if (creator != null) {
+            creator.getPolls().remove(poll);
+        }
+
+        // Remove any votes tied to this poll
+        votes.entrySet().removeIf(entry ->
+                entry.getValue().getVoteOption().getPoll().equals(poll)
+        );
     }
 }

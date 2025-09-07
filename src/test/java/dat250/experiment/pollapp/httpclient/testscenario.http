@@ -38,6 +38,9 @@ GET http://localhost:8080/api/polls
 ### User 2 votes on the poll
 POST http://localhost:8080/api/votes?userId=2&pollId=1&optionIndex=0
 
+### List votes
+GET http://localhost:8080/api/votes/results/1
+
 ### User 2 changes his vote
 POST http://localhost:8080/api/votes?userId=2&pollId=1&optionIndex=1
 
@@ -47,5 +50,8 @@ GET http://localhost:8080/api/votes/results/1
 ### Delete the poll
 DELETE http://localhost:8080/api/polls/1
 
+### List all polls
+GET http://localhost:8080/api/polls
+
 ### List votes (should be empty)
-GET http://localhost:8080/api/votes/results/1
+GET http://localhost:8080/api/votes/results/2
