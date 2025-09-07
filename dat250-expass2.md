@@ -5,29 +5,14 @@ DAT250: Software Technology Experiment Assignment 2
 - Dependencies: ``Spring Web``
 
 ## Project set up
-### _Zone.Identifier
-- After I setup the project, i got a lot of ``_Zone.Identifier`` files, which i didn't like at all.
-- I found out that If you download a file from the internet on Windows, the OS adds ``ADS``
-- Which basically stores extra metadata and stuff. These are for i security purposes.
-- I tried to remove them for good, but failed.
-- Since they dont affect my project, I just ignored it in .gitignore.
-- Otherwise, I am happy with how the project was set up.   
-
-
-### Unresolved reference build.gradle.kts
-- After I indexed the project, everything in the file ``build.gradle.kts`` got unresolved. 
-- I checked the version of gradle -v matched with distributionUrl.
-- I ``Sync All gradle projects``. 
-- I ìnvalidates caches.. and restarted. 
-- I ran simple gradle prompts: 
-- ./gradlew test
--  ./gradlew bootRun # try visiting http://localhost:8080 in your browser
--  ./gradlew bootJar
-
-- I knew for a fact that gradle worked, but the editor IntelliJ struggled to recognize gradle. 
+- After setting up the project, I noticed that a lot of _Zone.Identifier files were created.
+- I found out that Windows adds Alternate Data Streams (ADS), such as _Zone.Identifier, whenever you download a file from the internet. These streams store metadata for security purposes.
+- I tried to remove them permanently but didn’t succeed. Since they don’t affect the project, I simply added them to .gitignore and moved on. 
+- Other than that, I was happy with how the project setup went.
+- I knew for a fact that gradle worked, but the editor IntelliJ struggled to recognize `build.gradle.kts`. 
 
   # Assignment
-- The assignment went fine:
-- For the test scenario, after User 1 created a new poll. I added 2 options, so User 2 can vote on the poll and changes his vote. ``testscenario.http``
-- Run PollappApplicationTests:
+The assignment went fine without any  hard struggles.
+- Everything worked smoothly.
+- To run the test, I used the following command:
 - ``gradle test --tests "dat250.experiment.pollapp.PollappApplicationTests.testScenario"``

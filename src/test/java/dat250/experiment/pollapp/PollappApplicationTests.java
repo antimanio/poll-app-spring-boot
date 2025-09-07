@@ -66,7 +66,7 @@ class PollappApplicationTests {
         // List all polls
         ResponseEntity<Poll[]> pollsResponse = restTemplate.getForEntity(BASE_URL + "api/polls", Poll[].class);
         assertNotNull(pollsResponse.getBody(), "Poll list should not be null");
-        assertEquals(1, pollsResponse.getBody().length, "Expected 1 users in the list");
+        assertEquals(1, pollsResponse.getBody().length, "Expected 1 poll in the list");
 
         // User 2 votes on the poll
         ResponseEntity<Vote> vote1Response = restTemplate.postForEntity(BASE_URL + "api/votes?userId=2&pollId=1&optionIndex=0", null, Vote.class);
