@@ -1,4 +1,4 @@
-DAT250: Software Technology Experiment Assignment 2
+# DAT250: Software Technology Experiment Assignment 2
 
 ## Installation
 - I used [Spring initializr](https://start.spring.io/) to start the project.
@@ -10,8 +10,10 @@ DAT250: Software Technology Experiment Assignment 2
 - I tried to remove them permanently but didn’t succeed. Since they don’t affect the project, I simply added them to .gitignore and moved on. 
 - Other than that, I was happy with how the project setup went.
 - I knew for a fact that gradle worked, but the editor IntelliJ struggled to recognize `build.gradle.kts`. 
-
-  # Assignment
+- Image below is after the project is indexed. Any suggestions? 
+![unresolved reference gradle.png](images/unresolved%20reference%20gradle.png)
+  
+## Assignment
 The assignment went fine without any  hard struggles.
 - Everything worked smoothly.
 - To run the test, I used the following command:
