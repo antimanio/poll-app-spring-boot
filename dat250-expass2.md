@@ -11,7 +11,12 @@
 - Other than that, I was happy with how the project setup went.
 - I knew for a fact that gradle worked, but the editor IntelliJ struggled to recognize `build.gradle.kts`. 
 - Image below is after the project is indexed. Any suggestions? 
-![unresolved reference gradle.png](images/unresolved%20reference%20gradle.png)
+![unresolved-reference-gradle-kotlin.png](images/unresolved-reference-gradle-kotlin.png)
+
+## Fix Unresolved reference
+- I ended up installing IntelliJ through WSL. 
+- Remove also _Zone.Identifier when swithing over IntelliJ within the Ubuntu enviroment. 
+![resolved-reference-gradle-wsl.png](images/resolved-reference-gradle-kotlin.png)
   
 ## Assignment
 The assignment went fine without any  hard struggles.
