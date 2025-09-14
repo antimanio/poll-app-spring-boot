@@ -17,3 +17,16 @@
 - Presentation order is not handled. Just the last vote option added. 
 - There is some repetitive code in my project that could probably benefit from refactoring, but overall I am happy with the results.
 
+
+## Results
+
+### Create User
+![poll-app-create-user-component.png](images/poll-app-create-user-component.png)
+
+### Create Poll & Options
+
+![poll-app-poll-component.png](images/poll-app-poll-component.png)
+
+### Vote
+
+![poll-app-vote-component.png](images/poll-app-vote-component.png)
