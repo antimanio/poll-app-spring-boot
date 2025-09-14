@@ -25,8 +25,8 @@ public class VoteController {
     //    this.pollManager = pollManager;
     //}
 
-    @PostMapping
-    public ResponseEntity<?> castVote(@RequestParam long userId,
+    @PostMapping("/upvote")
+    public ResponseEntity<?> upVote(@RequestParam long userId,
                                       @RequestParam long pollId,
                                       @RequestParam int optionIndex) {
 
@@ -51,7 +51,37 @@ public class VoteController {
                     .body(Map.of("error", "Invalid option index"));
         }
 
-        Vote vote = pollManager.castVote(voter.get(), options.get(optionIndex));
+        Vote vote = pollManager.upVote(voter.get(), options.get(optionIndex));
+        return ResponseEntity.ok(vote);
+    }
+
+    @PostMapping("/downvote")
+    public ResponseEntity<?> downVote(@RequestParam long userId,
+                                      @RequestParam long pollId,
+                                      @RequestParam int optionIndex) {
+
+        Optional<User> voter = pollManager.getUser(userId);
+        Optional<Poll> poll = pollManager.getPoll(pollId);
+
+        if (voter.isEmpty() || poll.isEmpty()) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("error", "User or Poll not found"));
+        }
+
+        List<VoteOption> options = poll.get().getVoteOptions();
+        if (options.isEmpty()) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("error", "Poll has no vote options"));
+        }
+        if (optionIndex < 0 || optionIndex >= options.size()) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("error", "Invalid option index"));
+        }
+
+        Vote vote = pollManager.downVote(voter.get(), options.get(optionIndex));
         return ResponseEntity.ok(vote);
     }
 
