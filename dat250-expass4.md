@@ -8,9 +8,9 @@
 - Since it supports standard SQL, Hibernate can work with it easily. For example, in a test you might see:
 - `.property(PersistenceConfiguration.JDBC_URL, "jdbc:h2:mem:polls")`, which means hibernate is using H2 Database named polls. 
 
-# PollTest.java - setUp() 
+## PollTest.java - setUp()
 - EntityManger is the main object used to interact with the database (CRUD-operations). EntityMangerFactory produces EntityManager objects.
-- The EntityManagerFactory is the setup and entry point for working with the H2 database. 
+- The EntityManagerFactory is the setup and entry point for working with the H2 database.
 - The configuration in  says “Use an in-memory H2 database called polls, wipe and recreate it each run, and manage the entities Poll, User, Vote, and VoteOption.”
 
 # JPA Annotations
@@ -21,28 +21,28 @@
 ## OneToMany & ManyToOne
    
 ### User class
-- `@OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = true)`
-- `private Set<Poll> created;`
+`@OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = true)`
+`private Set<Poll> created;`
 
 Explanation:
 - One user can create many polls. 
 - mappedBy "createdBy" in the poll class.
 - `cascade = CascadeType.ALL` means: if you save/delete a User, its polls will be saved/deleted too.
 
-| Operation	Effect |
-| ------------------------------------------------------ |
-| PERSIST | Saving a User will also save all its Polls. |
-| MERGE   | Updating a User will also update its Polls. |
-| REMOVE  | Deleting a User will also delete its Polls. |
-| REFRESH | Refreshing a User from DB will also refresh its Polls. | 
-| DETACH  | Detaching a User from the persistence context will also detach its Polls. |
+| Operation | 	Effect                                                                   |
+|-----------|---------------------------------------------------------------------------|
+| PERSIST   | Saving a User will also save all its Polls.                               |
+| MERGE     | Updating a User will also update its Polls.                               |
+| REMOVE    | Deleting a User will also delete its Polls.                               |
+| REFRESH   | Refreshing a User from DB will also refresh its Polls.                    | 
+| DETACH    | Detaching a User from the persistence context will also detach its Polls. |
 
 - `orphanRemoval = true`. If you remove a Poll from the created set, Hibernate will delete it from the database, even if the User itself is not deleted.
 
 ### Poll class
-- `@ManyToOne`
-- `@JoinColumn(name = "created_by_id")`
-- `private User createdBy;`
+`@ManyToOne`
+`@JoinColumn(name = "created_by_id")`
+`private User createdBy;`
 
 Explanation:
 - Many Polls can be created by one User. 
