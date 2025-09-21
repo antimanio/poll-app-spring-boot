@@ -21,8 +21,10 @@
 ## OneToMany & ManyToOne
    
 ### User class
-`@OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = true)`
-`private Set<Poll> created;`
+```
+@OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL, orphanRemoval = true)`
+private Set<Poll> created;
+```
 
 Explanation:
 - One user can create many polls. 
@@ -40,9 +42,11 @@ Explanation:
 - `orphanRemoval = true`. If you remove a Poll from the created set, Hibernate will delete it from the database, even if the User itself is not deleted.
 
 ### Poll class
-`@ManyToOne`
-`@JoinColumn(name = "created_by_id")`
-`private User createdBy;`
+```
+@ManyToOne
+@JoinColumn(name = "created_by_id")
+private User createdBy;
+```
 
 Explanation:
 - Many Polls can be created by one User. 
