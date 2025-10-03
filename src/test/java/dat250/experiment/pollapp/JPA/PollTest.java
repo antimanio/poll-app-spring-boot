@@ -52,6 +52,13 @@ class PollsTest {
                 .property(PersistenceConfiguration.SCHEMAGEN_DATABASE_ACTION, "drop-and-create")
                 .property(PersistenceConfiguration.JDBC_USER, "sa")
                 .property(PersistenceConfiguration.JDBC_PASSWORD, "")
+
+                // Enable Hibernate SQL logging
+                .property("hibernate.show_sql", "true")                 // prints SQL to console
+                .property("hibernate.format_sql", "true")               // formats SQL nicely
+                .property("hibernate.use_sql_comments", "true")         // optional: adds comments
+                .property("hibernate.type.descriptor.sql.BasicBinder", "TRACE")  // shows parameter values
+
                 .createEntityManagerFactory();
         emf.runInTransaction(em -> {
             populate(em);

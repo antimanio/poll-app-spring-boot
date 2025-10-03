@@ -61,5 +61,13 @@ Explanation:
 - You can see the user/voter Alice made the poll Vim or Emacs. She voted on Vim. 
 ![PollTestJavaInspectVote.png](images/PollTestJavaInspectVote.png)
 
+- Can also see the log generated and executed by the ORM, by adding these properties using hibernate:
+  ```
+  .property("hibernate.show_sql", "true")                 // prints SQL to console
+  .property("hibernate.format_sql", "true")               // formats SQL nicely
+  .property("hibernate.use_sql_comments", "true")         // optional: adds comments
+  .property("hibernate.type.descriptor.sql.BasicBinder", "TRACE")  // shows parameter values
+  ```
+
 Test passed:
 - ![PollTestJavaPassed.png](images/PollTestJavaPassed.png)
