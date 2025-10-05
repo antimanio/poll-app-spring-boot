@@ -1,4 +1,4 @@
-# Redis
+# Redis & MongoDB
 
 ## Use case 1:
 Operations on Set datatype:
@@ -60,4 +60,40 @@ Operations on Set datatype:
 ###### Delete key: 
 - `DEL poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b`
 ###### Flow:
-- ![ReJson-Redis.png](images/ReJson-Redis.png)
+![ReJson-Redis.png](images/ReJson-Redis.png)
+
+
+## Implementasjon using java
+
+##### Set up MongoDB in Docker
+- Pull latest image from dockerhub: `docker pull mongo:latest`. 
+- Started a container: `docker run -d --name mongodb -p 27017:27017 mongo:latest`
+- Check running container: `docker ps -a`
+
+##### Interacte with MongoDB using mongosh (optional)
+- open shell: `docker exec -it mongodb mongosh`
+![mongodb-redis.png](images/mongodb-redis.png)
+
+- See some data...
+![db.polls.find.pretty.png](images/db.polls.find.pretty.png)
+
+
+##### RedisApplication
+- You can see the detailed implementation in `RedisApplication.java`.
+- In this project, we implemented a polling application using MongoDB for persistence and Redis for cache.
+- We used RedisJson to store the denormalized poll objects and JedisPooled as Redis client. 
+- Cache Entries have a TTL of 60 seconds here. 
+- We invalidate the cache whenever we have to go through the database, otherwise just updated the cache itself.  
+
+##### Observartion
+Database:
+![fetchdata-from-mongodb.png](images/fetchdata-from-mongodb.png)
+
+Cache:
+![fetchdata-from-redis.png](images/fetchdata-from-redis.png)
+
+- You can see that the initial fetch of the data took 152ms, whereas retrieving it from the cache only took 11ms. Huge improvement. 
+
+
+##### Overall 
+- No technical problems were encountered during MongoDB installation or use, and all tasks were completed successfully without issues.
