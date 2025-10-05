@@ -75,7 +75,7 @@ Operations on Set datatype:
 ![mongodb-redis.png](images/mongodb-redis.png)
 
 - See some data...
-![db.polls.find.pretty.png](images/db.polls.find.pretty.png)
+- ![db.polls.find.pretty.png](images/db.polls.find.pretty.png)
 
 
 ##### RedisApplication
