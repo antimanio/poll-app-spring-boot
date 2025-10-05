@@ -29,35 +29,35 @@ Operations on Set datatype:
 ## Use Case 2:
 
 ### Using Hash:
-- Create title: 
+Create title: 
 - `HSET poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b title "Pineapple on Pizza?"`
 
-- Create hash per poll option:
+Create hash per poll option:
 - `HSET poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b:option:yes caption "Yes, yammy!" votes 269`
 - `HSET poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b:option:no caption "Mamma mia, nooooo!" votes 268`
 - `HSET poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b:option:neutral caption "I do not really care ..." votes 42`
 
-- Get all fields for option yes: 
+Get all fields for option yes: 
 - `HGETALL poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b:option:yes`
 
-- Increment vote count:
+Increment vote count:
 -`HINCRBY poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b:option:yes votes 1`
 - Redis Has support atomic increment with `HINCRBY` without rewriting the whole object. 
 
-- Check result: 
+Check result: 
 - `HGET poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b:option:yes votes`
 
-- Flow:
+Flow:
 ![Hash-Redis.png](images/Hash-Redis.png)
 
 ### Using ReJSON
-- Store Json Values:
+Store Json Values:
 - `JSON.SET poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b $ '{"id": "03ebcb7b-bd69-440b-924e-f5b7d664af7b", "title": "Pineapple on Pizza?", "options": [ { "caption": "Yes, yammy!", "voteCount": 269 }, { "caption": "Mamma mia, nooooo!", "voteCount": 268 }, { "caption": "I do not really care ...", "voteCount": 42 } ]}'`
-- Retrieve Json Values:
+Retrieve Json Values:
 - `JSON.GET poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b`
-- Increment vote count for the first option: 
+Increment vote count for the first option: 
 - `JSON.NUMINCRBY poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b $.options[0].voteCount 1`
-- Delete key: 
+Delete key: 
 - `DEL poll:03ebcb7b-bd69-440b-924e-f5b7d664af7b`
-- Flow:
+Flow:
 - ![ReJson-Redis.png](images/ReJson-Redis.png)
