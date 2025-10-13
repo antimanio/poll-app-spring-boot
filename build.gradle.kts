@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-amqp")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("redis.clients:jedis:6.2.0")
 	implementation("org.hibernate.orm:hibernate-core:7.1.1.Final")
@@ -31,4 +33,8 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
+	mainClass.set("RabbitMQApplication")
 }
