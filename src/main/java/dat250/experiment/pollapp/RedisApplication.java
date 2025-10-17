@@ -2,6 +2,7 @@ package dat250.experiment.pollapp;
 import com.mongodb.client.model.Filters;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
@@ -13,6 +14,7 @@ import redis.clients.jedis.json.Path2;
 
 
 @SpringBootApplication
+@Profile("redis")
 @RestController
 @RequestMapping("/polls")
 public class RedisApplication {

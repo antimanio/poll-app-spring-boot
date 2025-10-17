@@ -36,5 +36,5 @@ tasks.withType<Test> {
 }
 
 tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
-	mainClass.set("RabbitMQApplication")
+	mainClass.set("dat250.experiment.pollapp.PollappApplication")
 }
